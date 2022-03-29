@@ -72,4 +72,3 @@ d3.json("us-states.json", function (json) {
 
 
 });
-
