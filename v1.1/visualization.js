@@ -26,11 +26,15 @@ const svg = d3.select("body")
 
 const g = svg.append("g");
 
-const div = d3.select("body")
+const tooltip = d3.select("body")
     .append("div")   
     .attr("class", "tooltip")               
     .style("opacity", 0);
 
+const more_details = d3.select("body")
+    .append("div")   
+    .attr("class", "more_details")               
+    .style("opacity", 0);
 
 d3.json("us-states.json").then(function(json) {
     // Bind the data to the SVG and create one path per GeoJSON feature
@@ -61,25 +65,30 @@ d3.json("us-states.json").then(function(json) {
                 .style("opacity", 0.85)	
 
             .on("mouseover", function(event, d) {      
-                div.transition()        
+                tooltip.transition()        
                     .duration(200)      
                     .style("opacity", .9);      
-                    div.text(d.resort_name)
+                    tooltip.text(d.resort_name)
                     .style("left", (event.pageX) + "px")     
                     .style("top", (event.pageY - 28) + "px");    
             })  
             // fade out tooltip on mouse out               
             .on("mouseout", function(event, d) {       
-                div.transition()        
+                tooltip.transition()        
                 .duration(500)      
                 .style("opacity", 0);   
-            });
+            })
+            .on("click", details);
     });
 });
 
-function clicked(event, d) {    
+let cur_state = null;
+
+function clicked(event, d) { 
+    d3.select(cur_state).transition().style("fill", "#444");   
+    cur_state = this;
     const [[x0, y0], [x1, y1]] = path.bounds(d);
-    // d3.select(this).transition().style("fill", "green");
+    d3.select(this).transition().style("fill", "green");
     svg.transition().duration(750).call(
         zoom.transform,
         d3.zoomIdentity
@@ -90,13 +99,10 @@ function clicked(event, d) {
       );
 }
 
-// function reset() {
-//     svg.transition().duration(750).call(
-//       zoom.transform,
-//       d3.zoomIdentity,
-//       d3.zoomTransform(svg.node()).invert([width / 2, height / 2])
-//     );
-//   }
+function details(event, d) {
+    tooltip.text(d.resort_name + "\nGreen Percent: " + d.green_percent*100 + "%" + "\nBlue Percent: " + d.blue_percent*100 + "%" + "\nBlack Percent: " + d.black_percent*100 + "%");
+}
+
 d3.select('svg')
   .call(zoom);
 
