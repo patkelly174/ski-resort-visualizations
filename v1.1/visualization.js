@@ -23,8 +23,8 @@ const svg = d3.select("body")
             .attr("viewBox", [0, 0, width, height]);
 
 
-const g = svg.append("g");
 
+const g = svg.append("g");
 
 const div = d3.select("body")
     .append("div")   
@@ -43,8 +43,7 @@ d3.json("us-states.json").then(function(json) {
         .join("path")
         .on("click", clicked)
         .attr("d", path);
-
-
+        
     
     d3.csv("ski_resort_stats.csv").then(function (data) {
         g.selectAll("circle")
@@ -74,13 +73,13 @@ d3.json("us-states.json").then(function(json) {
                 div.transition()        
                 .duration(500)      
                 .style("opacity", 0);   
-            }); 
+            });
     });
 });
 
 function clicked(event, d) {    
     const [[x0, y0], [x1, y1]] = path.bounds(d);
-    d3.select(this).transition().style("fill", "green");
+    // d3.select(this).transition().style("fill", "green");
     svg.transition().duration(750).call(
         zoom.transform,
         d3.zoomIdentity
@@ -92,13 +91,14 @@ function clicked(event, d) {
 }
 
 // function reset() {
-//     svg.selectAll("g").transition().style("fill", "#444");
 //     svg.transition().duration(750).call(
 //       zoom.transform,
 //       d3.zoomIdentity,
 //       d3.zoomTransform(svg.node()).invert([width / 2, height / 2])
 //     );
 //   }
+d3.select('svg')
+  .call(zoom);
 
 function zoomed(event) {
     const {transform} = event;
