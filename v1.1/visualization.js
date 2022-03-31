@@ -97,7 +97,21 @@ d3.json("us-states.json").then(function(json) {
             })
             .attr("width", 4)
             .attr("height", 4)
-            .attr("fill", "yellow");
+            .attr("fill", "yellow")
+            .on("mouseover", function(event, d) {      
+                tooltip.transition()        
+                    .duration(200)      
+                    .style("opacity", .9);
+		    tooltip.text(d.name + "\n")
+                    .style("left", (event.pageX) + "px")     
+                    .style("top", (event.pageY - 28) + "px");    
+            })  
+            // fade out tooltip on mouse out               
+            .on("mouseout", function(event, d) {       
+                tooltip.transition()        
+                .duration(500)      
+                .style("opacity", 0);   
+            });
 
     });
 });
