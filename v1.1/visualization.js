@@ -67,8 +67,11 @@ d3.json("us-states.json").then(function(json) {
             .on("mouseover", function(event, d) {      
                 tooltip.transition()        
                     .duration(200)      
-                    .style("opacity", .9);      
-                    tooltip.text(d.resort_name)
+                    .style("opacity", .9);
+		    tooltip.text("Resort Name: " + d.resort_name + "\n" 
+                        + "Summit Height: " + d.summit + "\n"
+                        +"Vertical Drop: " + d.vertical + "\n"
+                        +"Lifts: " + d.lifts + "\n")
                     .style("left", (event.pageX) + "px")     
                     .style("top", (event.pageY - 28) + "px");    
             })  
