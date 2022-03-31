@@ -1,6 +1,6 @@
 //Width and height of map
 const width = 960;
-const height = 500;
+const height = 1000;
 
 const zoom = d3.zoom()
     .scaleExtent([1, 8])
