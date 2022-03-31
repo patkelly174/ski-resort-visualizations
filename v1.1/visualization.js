@@ -83,6 +83,37 @@ d3.json("us-states.json").then(function(json) {
             })
             .on("click", details);
     });
+
+    d3.csv("us-airports.csv").then(function (data) {
+        g.selectAll("rect")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", function(d) {
+                return projection([d.lon, d.lat])[0];
+            })
+            .attr("y", function(d) {
+                return projection([d.lon, d.lat])[1];
+            })
+            .attr("width", 4)
+            .attr("height", 4)
+            .attr("fill", "yellow")
+            .on("mouseover", function(event, d) {      
+                tooltip.transition()        
+                    .duration(200)      
+                    .style("opacity", .9);
+		    tooltip.text(d.name + "\n")
+                    .style("left", (event.pageX) + "px")     
+                    .style("top", (event.pageY - 28) + "px");    
+            })  
+            // fade out tooltip on mouse out               
+            .on("mouseout", function(event, d) {       
+                tooltip.transition()        
+                .duration(500)      
+                .style("opacity", 0);   
+            });
+
+    });
 });
 
 let cur_state = null;
