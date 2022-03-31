@@ -68,7 +68,8 @@ d3.json("us-states.json").then(function(json) {
                 tooltip.transition()        
                     .duration(200)      
                     .style("opacity", .9);
-		    tooltip.text("Resort Name: " + d.resort_name + "\n" 
+		    tooltip.text("Resort Name: " + d.resort_name + "\n"
+			+ "Skiable Acres: " + d.acres + "\n"
                         + "Summit Height: " + d.summit + "\n"
                         +"Vertical Drop: " + d.vertical + "\n"
                         +"Lifts: " + d.lifts + "\n")
