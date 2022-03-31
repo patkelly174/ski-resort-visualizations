@@ -83,6 +83,23 @@ d3.json("us-states.json").then(function(json) {
             })
             .on("click", details);
     });
+
+    d3.csv("us-airports.csv").then(function (data) {
+        g.selectAll("rect")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", function(d) {
+                return projection([d.lon, d.lat])[0];
+            })
+            .attr("y", function(d) {
+                return projection([d.lon, d.lat])[1];
+            })
+            .attr("width", 4)
+            .attr("height", 4)
+            .attr("fill", "yellow");
+
+    });
 });
 
 let cur_state = null;
