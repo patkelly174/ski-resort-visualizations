@@ -72,7 +72,8 @@ d3.json("us-states.json").then(function(json) {
 			+ "Skiable Acres: " + d.acres + "\n"
                         + "Summit Height: " + d.summit + "\n"
                         +"Vertical Drop: " + d.vertical + "\n"
-                        +"Lifts: " + d.lifts + "\n")
+                        +"Lifts: " + d.lifts + "\n"
+			+"Annual Snowfall: " + d.annual_snowfall + "\n")
                     .style("left", (event.pageX) + "px")     
                     .style("top", (event.pageY - 28) + "px");    
             })  
