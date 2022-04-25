@@ -2,6 +2,7 @@
 const width = 960;
 const height = 1000;
 
+
 const zoom = d3.zoom()
     .scaleExtent([1, 8])
     .on("zoom", zoomed);
@@ -46,6 +47,7 @@ d3.json("us-states.json").then(function(json) {
         .data(json.features)
         .join("path")
         .on("click", clicked)
+        .on("mouseover", listResorts)
         .attr("d", path);
         
     
@@ -64,7 +66,7 @@ d3.json("us-states.json").then(function(json) {
                 .style("fill", "blue")	
                 .style("opacity", 0.85)	
 
-            .on("mouseover", function(event, d) {      
+            .on("mouseover", function(event, d) { 
                 tooltip.transition()        
                     .duration(200)      
                     .style("opacity", .9);
@@ -131,6 +133,27 @@ function clicked(event, d) {
           .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
         d3.pointer(event, svg.node())
       );
+}
+
+let arr = [];
+
+function listResorts(event, d) {
+    arr = [];
+    const resort_div = document.getElementById("resort-list");
+    resort_div.innerText = "";
+    d3.csv("ski_resort_stats.csv").then(function (data) {
+        data.forEach(data => {
+            if (data.state === d.properties.NAME) {
+                arr.push(data.resort_name);
+            }
+        });
+
+        arr.forEach((item)=>{
+            let li = document.createElement("li");
+            li.innerText = item;
+            resort_div.appendChild(li);
+          })
+    });
 }
 
 function details(event, d) {
