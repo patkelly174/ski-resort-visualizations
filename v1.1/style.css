@@ -19,4 +19,12 @@ div.tooltip {
 	white-space: pre-line;        
 }
 
+#wrapper {
+    width: auto;
+}
+#svg-div {
+    width: 85%;
+	float: left;
+}
+
         

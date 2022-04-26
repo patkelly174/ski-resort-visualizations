@@ -19,9 +19,9 @@ const path = d3.geoPath()               // path generator that will convert GeoJ
 
 
 //Create SVG element and append map to the SVG
-const svg = d3.select("body")
+const svg = d3.select("#svg-div")
             .append("svg")
-            .attr("viewBox", [100, 250, width, 600]);
+            .attr("viewBox", [0, 250, width, height]);
 
 
 const g = svg.append("g");
