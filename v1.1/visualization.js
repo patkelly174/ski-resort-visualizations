@@ -139,11 +139,12 @@ function clicked(event, d) {
 
 let arr = [];
 const resort_div = document.getElementById("resort-list");
-
+const list_title = document.getElementById("list-title");
 
 function listResorts(event, d) {
     arr = [];
     resort_div.innerText = "";
+    list_title.innerText = d.properties.NAME + " Resorts";
     d3.csv("ski_resort_stats.csv").then(function (data) {
         data.forEach(data => {
             if (data.state === d.properties.NAME) {
