@@ -26,6 +26,7 @@ const svg = d3.select("#svg-div")
 
 const g = svg.append("g");
 
+
 const tooltip = d3.select("body")
     .append("div")   
     .attr("class", "tooltip")               
@@ -137,10 +138,11 @@ function clicked(event, d) {
 }
 
 let arr = [];
+const resort_div = document.getElementById("resort-list");
+
 
 function listResorts(event, d) {
     arr = [];
-    const resort_div = document.getElementById("resort-list");
     resort_div.innerText = "";
     d3.csv("ski_resort_stats.csv").then(function (data) {
         data.forEach(data => {
@@ -156,6 +158,13 @@ function listResorts(event, d) {
           })
     });
 }
+
+
+g.append("circle").attr("cx",100).attr("cy",780).attr("r", 6).style("fill", "grey");
+g.append("rect").attr("x",95).attr("y",805).attr("width", 10).attr("height", 10).style("fill", "red");
+g.append("text").attr("x", 120).attr("y", 780).text("Ski Resorts").style("font-size", "15px").attr("alignment-baseline","middle");
+g.append("text").attr("x", 120).attr("y", 810).text("Airports").style("font-size", "15px").attr("alignment-baseline","middle");
+
 
 function details(event, d) {
     tooltip.text(d.resort_name + "\nGreen Percent: " + d.green_percent*100 + "%" + "\nBlue Percent: " + d.blue_percent*100 + "%" + "\nBlack Percent: " + d.black_percent*100 + "%");
