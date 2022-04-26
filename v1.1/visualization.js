@@ -41,7 +41,7 @@ d3.json("us-states.json").then(function(json) {
     // Bind the data to the SVG and create one path per GeoJSON feature
     // console.log(json.features);
     const states = g.append("g")
-        .attr("fill", "#444")
+        .attr("fill", "navy")
         .attr("cursor", "pointer")
         .selectAll("path")
         .data(json.features)
@@ -63,7 +63,7 @@ d3.json("us-states.json").then(function(json) {
                 return projection([d.lon, d.lat])[1];
             })
             .attr("r", 3)
-                .style("fill", "blue")	
+                .style("fill", "grey")	
                 .style("opacity", 0.85)	
 
             .on("mouseover", function(event, d) { 
@@ -101,7 +101,7 @@ d3.json("us-states.json").then(function(json) {
             })
             .attr("width", 4)
             .attr("height", 4)
-            .attr("fill", "yellow")
+            .attr("fill", "red")
             .on("mouseover", function(event, d) {      
                 tooltip.transition()        
                     .duration(200)      
