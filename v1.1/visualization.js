@@ -147,7 +147,7 @@ function listResorts(event, d) {
     list_title.innerText = d.properties.NAME + " Resorts";
     d3.csv("ski_resort_stats.csv").then(function (data) {
         data.forEach(data => {
-            if (data.state === d.properties.NAME) {
+            if (data.state.includes(d.properties.NAME)) {
                 arr.push(data.resort_name);
             }
         });
