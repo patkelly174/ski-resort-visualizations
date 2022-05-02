@@ -175,7 +175,7 @@ g.append("text").attr("x", 260).attr("y", 830).text("Lifts: total count of lifts
 g.append("text").attr("x", 260).attr("y", 840).text("Annual Snowfall: total amount of snow per year (0 inches indicates missing data)").style("font-size", "10px").style("fill", "white").attr("alignment-baseline","middle");
 
 g.append("text").attr("x", 670).attr("y", 780).text("Terrain Difficulty Key:").style("font-size", "15px").style("fill", "Navy").attr("alignment-baseline","middle").attr("font-weight", "bold");
-g.append("text").attr("x", 680).attr("y", 800).text("Green = Easiest").style("font-size", "15px").style("fill", "green").attr("alignment-baseline","middle");
+g.append("text").attr("x", 680).attr("y", 800).text("Green = Beginner").style("font-size", "15px").style("fill", "green").attr("alignment-baseline","middle");
 g.append("text").attr("x", 680).attr("y", 820).text("Blue = Intermediate").style("font-size", "15px").style("fill", "blue").attr("alignment-baseline","middle");
 g.append("text").attr("x", 680).attr("y", 840).text("Black = Expert").style("font-size", "15px").style("fill", "black").attr("alignment-baseline","middle");
 
