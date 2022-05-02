@@ -161,11 +161,26 @@ function listResorts(event, d) {
 }
 
 
-g.append("circle").attr("cx",100).attr("cy",780).attr("r", 6).style("fill", "grey");
-g.append("rect").attr("x",95).attr("y",805).attr("width", 10).attr("height", 10).style("fill", "red");
-g.append("text").attr("x", 120).attr("y", 780).text("Ski Resorts").style("font-size", "15px").attr("alignment-baseline","middle");
-g.append("text").attr("x", 120).attr("y", 810).text("Airports").style("font-size", "15px").attr("alignment-baseline","middle");
-g.append("text").attr("x", 100).attr("y", 850).text("*Annual snowfall values = 0 are considered missing data").style("font-size", "10px").attr("alignment-baseline","middle");
+g.append("circle").attr("cx",100).attr("cy",800).attr("r", 6).style("fill", "grey");
+g.append("rect").attr("x",95).attr("y",825).attr("width", 10).attr("height", 10).style("fill", "red");
+g.append("text").attr("x", 120).attr("y", 800).text("Ski Resorts").style("font-size", "15px").style("fill", "navy").attr("alignment-baseline","middle");
+g.append("text").attr("x", 120).attr("y", 830).text("Airports").style("font-size", "15px").style("fill", "navy").attr("alignment-baseline","middle");
+
+g.append("rect").attr("x",240).attr("y",760).attr("width", 390).attr("height", 95).style("fill", "navy");
+g.append("text").attr("x", 250).attr("y", 780).text("Mountain Statistics Definitions:").style("font-size", "15px").style("fill", "white").attr("alignment-baseline","middle").attr("font-weight", "bold");
+g.append("text").attr("x", 260).attr("y", 800).text("Skiable Acres: the total area (or size) or skiable terrain").style("font-size", "10px").style("fill", "white").attr("alignment-baseline","middle");
+g.append("text").attr("x", 260).attr("y", 810).text("Summit Height: height (in feet) of top of mountain").style("font-size", "10px").style("fill", "white").attr("alignment-baseline","middle");
+g.append("text").attr("x", 260).attr("y", 820).text("Vertical Drop: elevation between summit and base of mountain").style("font-size", "10px").style("fill", "white").attr("alignment-baseline","middle");
+g.append("text").attr("x", 260).attr("y", 830).text("Lifts: total count of lifts").style("font-size", "10px").style("fill", "white").attr("alignment-baseline","middle");
+g.append("text").attr("x", 260).attr("y", 840).text("Annual Snowfall: total amount of snow per year (0 inches indicates missing data)").style("font-size", "10px").style("fill", "white").attr("alignment-baseline","middle");
+
+g.append("text").attr("x", 670).attr("y", 780).text("Terrain Difficulty Key:").style("font-size", "15px").style("fill", "Navy").attr("alignment-baseline","middle").attr("font-weight", "bold");
+g.append("text").attr("x", 680).attr("y", 800).text("Green = Easiest").style("font-size", "15px").style("fill", "green").attr("alignment-baseline","middle");
+g.append("text").attr("x", 680).attr("y", 820).text("Blue = Intermediate").style("font-size", "15px").style("fill", "blue").attr("alignment-baseline","middle");
+g.append("text").attr("x", 680).attr("y", 840).text("Black = Expert").style("font-size", "15px").style("fill", "black").attr("alignment-baseline","middle");
+
+
+
 
 function details(event, d) {
     tooltip.text(d.resort_name + "\nGreen Percent: " + d.green_percent*100 + "%" + "\nBlue Percent: " + d.blue_percent*100 + "%" + "\nBlack Percent: " + d.black_percent*100 + "%");
