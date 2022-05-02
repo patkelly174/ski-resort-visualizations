@@ -71,11 +71,11 @@ d3.json("us-states.json").then(function(json) {
                     .duration(200)      
                     .style("opacity", .9);
 		    tooltip.text("Resort Name: " + d.resort_name + "\n"
-			+ "Skiable Acres: " + d.acres + "\n"
+			            + "Skiable Acres: " + d.acres + "\n"
                         + "Summit Height: " + d.summit + "\n"
                         +"Vertical Drop: " + d.vertical + "\n"
                         +"Lifts: " + d.lifts + "\n"
-			+"Annual Snowfall: " + d.annual_snowfall + "\n")
+                        +"Annual Snowfall: " + d.annual_snowfall + " inches")
                     .style("left", (event.pageX) + "px")     
                     .style("top", (event.pageY - 28) + "px");    
             })  
@@ -165,7 +165,7 @@ g.append("circle").attr("cx",100).attr("cy",780).attr("r", 6).style("fill", "gre
 g.append("rect").attr("x",95).attr("y",805).attr("width", 10).attr("height", 10).style("fill", "red");
 g.append("text").attr("x", 120).attr("y", 780).text("Ski Resorts").style("font-size", "15px").attr("alignment-baseline","middle");
 g.append("text").attr("x", 120).attr("y", 810).text("Airports").style("font-size", "15px").attr("alignment-baseline","middle");
-
+g.append("text").attr("x", 100).attr("y", 850).text("*Annual snowfall values = 0 are considered missing data").style("font-size", "10px").attr("alignment-baseline","middle");
 
 function details(event, d) {
     tooltip.text(d.resort_name + "\nGreen Percent: " + d.green_percent*100 + "%" + "\nBlue Percent: " + d.blue_percent*100 + "%" + "\nBlack Percent: " + d.black_percent*100 + "%");
@@ -179,5 +179,3 @@ function zoomed(event) {
     g.attr("transform", transform);
     g.attr("stroke-width", 1 / transform.k);
   }
-
-
